@@ -4,7 +4,16 @@ Research question: When does tool use (ReAct, Toolformer) improve answers enough
 
 Page budget (4 pages, 2 columns): Intro 0.6 · Background 0.4 · ReAct 0.8 · Toolformer 0.8 · Discussion 1.0 · Conclusion 0.3
 
-Fill one sentence per paragraph first; expand later.
+The abstract sits on page 1, before the introduction, and counts toward the 4 pages. The intro budget shares that page with it.
+
+Fill one sentence per paragraph first; expand later. Keep the abstract in step with the paper: update it when the question, the comparison, or the finding changes.
+
+## Abstract
+Unnumbered. One paragraph, at most 200 words (ACL). Thesis and conclusions, not a section outline.
+
+- [ ] Problem:
+- [ ] What is compared:
+- [ ] Main finding (revise when Discussion settles):
 
 ## 1. Introduction
 - [ ] Problem:
