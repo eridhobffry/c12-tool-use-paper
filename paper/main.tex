@@ -1,0 +1,77 @@
+\documentclass[11pt]{article}
+
+% Course rules: ACL template, 2-column, max 4 pages body.
+% References and AI disclosure do NOT count toward the limit.
+% "final" = non-anonymous camera-ready look (no line numbers).
+\usepackage[final]{acl}
+
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{inconsolata}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% TODO: title in Title Case — your paper in one sentence.
+\title{When Does Tool Use Pay Off? ReAct and Toolformer Under a Cost Lens}
+
+\author{Eridho Rollian \\
+  Universität Hamburg \\
+  Seminar Understanding Large Language Models (WiSe 2026/27), Topic C12}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+% Write LAST (Friday). One paragraph: problem, objective, what you compare, main finding.
+TODO
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+% Background/problem -> objective -> research question -> contribution/outline.
+% Main statement: LLMs gain capabilities from tools, but every call costs tokens,
+% latency and money; this paper asks when tool use improves answers enough to justify that cost.
+TODO
+
+\section{Background}
+\label{sec:background}
+% Keep short (~0.5 page). In-context prompting, chain-of-thought, what "tool use" means.
+TODO
+
+\section{ReAct: Prompted Tool Use}
+\label{sec:react}
+% Reasoning traces interleaved with actions \citep{yao2023react}.
+% Evidence for the cost question: ReAct vs. CoT on HotpotQA; ReAct+CoT-SC combination.
+TODO
+
+\section{Toolformer: Learned Tool Use}
+\label{sec:toolformer}
+% Self-supervised API-call annotation \citep{schick2023toolformer}.
+% Built-in cost/benefit filter: keep a call only if it reduces LM loss.
+TODO
+
+\section{Discussion: When Does Tool Use Pay Off?}
+\label{sec:discussion}
+% Your contribution. Compare on: trigger mechanism, cost (calls/tokens/latency),
+% benefit, failure modes. Consider one comparison table.
+TODO
+
+\section{Conclusion}
+\label{sec:conclusion}
+% Main messages, implications, limitations.
+TODO
+
+% ---- End of 4-page body. Everything below does not count. ----
+\label{endofbody}
+
+\section*{AI Disclosure}
+% Required. Generated from notes/ai-log.md: which tool, which task, which section/figure.
+TODO
+
+\nocite{*} % lists all refs.bib entries; remove once you cite with \citet/\citep
+\bibliography{refs}
+
+\end{document}
