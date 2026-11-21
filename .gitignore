@@ -9,3 +9,6 @@
 *.fdb_latexmk
 paper/main.pdf
 .DS_Store
+
+# Editor tooling, not part of the paper
+.cursor/

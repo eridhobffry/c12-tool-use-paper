@@ -14,8 +14,9 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 
-% TODO: title in Title Case — your paper in one sentence.
-\title{When Does Tool Use Pay Off? ReAct and Toolformer Under a Cost Lens}
+% Placeholder title in Title Case. Eridho can replace it.
+% The dropped question ("when does tool use pay off?") stays out of the title.
+\title{How Tool Use Affects Accuracy in ReAct and Toolformer}
 
 \author{Eridho Rollian \\
   Universität Hamburg \\
@@ -35,31 +36,40 @@ TODO
 \section{Introduction}
 \label{sec:intro}
 % Background/problem -> objective -> research question -> contribution/outline.
-% Main statement: LLMs gain capabilities from tools, but every call costs tokens,
-% latency and money; this paper asks when tool use improves answers enough to justify that cost.
+% Research question: how tool use affects accuracy in ReAct and Toolformer, and
+% how those benefits relate to call frequency and the number of samples.
+% Tokens, latency, and money are unmeasured. Do not ask whether the cost is "justified".
 TODO
 
 \section{Background}
 \label{sec:background}
-% Keep short (~0.5 page). In-context prompting, chain-of-thought, what "tool use" means.
+% Keep short (~0.4 page). In-context prompting, chain-of-thought, what "tool use" means.
 TODO
 
 \section{ReAct: Prompted Tool Use}
 \label{sec:react}
 % Reasoning traces interleaved with actions \citep{yao2023react}.
-% Evidence for the cost question: ReAct vs. CoT on HotpotQA; ReAct+CoT-SC combination.
+% Table 1 (PaLM-540B): ReAct beats chain-of-thought on FEVER (60.9 vs. 56.3
+% accuracy) and trails it on HotpotQA (27.4 vs. 29.4 exact match).
+% Best combination order depends on the task: HotpotQA ReAct then CoT-SC
+% 35.1 exact match; FEVER CoT-SC then ReAct 64.6 accuracy.
+% Figure 2 is sample efficiency (3--5 samples match CoT-SC's 21), not total cost.
+% It counts CoT-SC samples only, not the combinations' ReAct steps or Wikipedia calls.
+% Table 2 (HotpotQA, human labels on 50 successes + 50 failures per method):
+% 6% of successful ReAct trajectories contain a hallucinated thought or fact.
 TODO
 
 \section{Toolformer: Learned Tool Use}
 \label{sec:toolformer}
 % Self-supervised API-call annotation \citep{schick2023toolformer}.
-% Built-in cost/benefit filter: keep a call only if it reduces LM loss.
+% Loss filter: keep a call only if it reduces LM loss. Not a correctness check
+% and not a cost measure. Evaluation allows at most one call per input.
 TODO
 
-\section{Discussion: When Does Tool Use Pay Off?}
+\section{Discussion}
 \label{sec:discussion}
-% Your contribution. Compare on: trigger mechanism, cost (calls/tokens/latency),
-% benefit, failure modes. Consider one comparison table.
+% Contribution: task-dependent gains, Table 9 reanalysis, selective calling,
+% and the missing fix/break table. Do not claim cost-effectiveness.
 TODO
 
 \section{Conclusion}
