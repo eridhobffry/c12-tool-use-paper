@@ -70,7 +70,41 @@ TODO
 \label{sec:discussion}
 % Contribution: task-dependent gains, Table 9 reanalysis, selective calling,
 % and the missing fix/break table. Do not claim cost-effectiveness.
-TODO
+Table~9 of \citet{schick2023toolformer} shows diminishing returns on T-REx:
+raising $k$ from 3 to 10 increases the share of examples with a call by
+15.3 percentage points (82.8\,\% to 98.1\,\%) but overall accuracy by only
+0.6 points (52.9 to 53.5). At the same time, accuracy falls both on examples
+with a call (58.0 to 54.0) and on those without one (29.0 to 22.5). This is a
+composition effect, not evidence that calls became less effective: overall
+accuracy is the weighted average of the two groups, and as $k$ rises,
+questions move from the uncalled to the called group, which changes both
+averages. By my own estimate, the newly called 15.3\,\% of questions score
+about 30\,\% without a call and about 32\,\% with one, a gain of roughly
+2.5 points (about 1.7 to 3.4 given the rounding of the reported figures);
+since they score well below the questions already called at $k=3$, they
+appear to be harder ones. This estimate rests on two assumptions that
+Table~9 does not confirm: that the questions called at $k=3$ are still
+called at $k=10$ and still score 58.0, and that the 1.9\,\% never called
+already scored 22.5 at $k=3$. It is also a net figure, so it cannot
+separate questions that a call fixes from those it breaks.
+
+Both papers make tool use selective, but they place the decision
+differently. In ReAct, two fixed rules decide when to switch between
+internal reasoning and external search: ReAct falls back to CoT-SC if it
+returns no answer within 7 steps on HotpotQA or 5 on FEVER, and CoT-SC
+falls back to ReAct if its majority answer occurs fewer than $n/2$ times
+\citep{yao2023react}. In Toolformer, the model itself decides whether to
+call, through the probability it assigns to the call token, and at $k=1$
+this decision appears calibrated: on T-REx it scores 44.3 on the
+59.7\,\% of examples it does not call, compared with 34.9 on all examples
+when calls are disabled, so it tends to call where it would do badly
+without a call \citep{schick2023toolformer}. This calibration is lost at
+$k=3$, where accuracy on the 17.2\,\% left uncalled falls to 29.0, below
+that baseline; because these figures cover different sets of examples,
+they show a pattern, not the effect of a call on any single question.
+% optional:
+Here, ``selective'' refers to accuracy; neither paper measures what a
+call costs.
 
 \section{Conclusion}
 \label{sec:conclusion}

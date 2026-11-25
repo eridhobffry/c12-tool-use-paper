@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ideation: Table 9 reanalysis</title>
+<style>
+  :root {
+    --bg: #f4f0e8;
+    --paper: #fffdf8;
+    --ink: #1c1917;
+    --muted: #57534e;
+    --line: #e4dcd0;
+    --accent: #1e3a5f;
+    --accent-soft: #e7eef6;
+    --warn-soft: #f8efe3;
+    --good-soft: #e6f2ea;
+    --chip: #efe8dc;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.55 Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+  header.mast { margin-bottom: 2rem; }
+  .eyebrow {
+    font-family: "Segoe UI", system-ui, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 0.4rem;
+  }
+  h1 { font-size: 1.85rem; line-height: 1.2; margin: 0 0 0.6rem; font-weight: 600; }
+  .meta { font-family: "Segoe UI", system-ui, sans-serif; font-size: 0.92rem; color: var(--muted); }
+  .meta span { display: inline-block; margin-right: 1rem; }
+  .stats { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.1rem 0 0; padding: 0; list-style: none; }
+  .stats li {
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.85rem;
+  }
+  nav.toc { margin: 0 0 1.5rem; }
+  nav.toc a { color: var(--accent); }
+  section { margin: 2.2rem 0; }
+  h2 { font-size: 1.25rem; margin: 0 0 0.7rem; font-weight: 600; }
+  h3 { font-size: 1.08rem; margin: 0; font-weight: 600; }
+  p, li { max-width: 70ch; }
+  strong { font-weight: 700; color: inherit; }
+  a { color: var(--accent); }
+  .prose p { margin: 0.55rem 0; }
+  article.idea {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 1rem 1.1rem 1.15rem;
+    margin: 0.9rem 0;
+  }
+  .idea h3 { margin-bottom: 0.65rem; }
+  dl.fields { display: grid; grid-template-columns: 8.5rem 1fr; gap: 0.35rem 0.75rem; margin: 0.8rem 0 0; font-size: 0.95rem; }
+  dt {
+    font-family: "Segoe UI", system-ui, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-top: 0.2rem;
+  }
+  dd { margin: 0; }
+  .jump { font-family: "Segoe UI", system-ui, sans-serif; font-size: 0.92rem; padding-left: 1.1rem; }
+  .jump a { text-decoration: none; }
+  .jump a:hover { text-decoration: underline; }
+  figure.diagram { margin: 0.8rem 0 0.2rem; }
+  figure.diagram svg { width: 100%; height: auto; display: block; }
+  figcaption {
+    font-family: "Segoe UI", system-ui, sans-serif;
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-top: 0.3rem;
+  }
+  table { width: 100%; border-collapse: collapse; background: var(--paper); font-size: 0.92rem; }
+  th, td { border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; padding: 0.45rem 0.55rem; }
+  th { font-family: "Segoe UI", system-ui, sans-serif; font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+  footer.composition-signal {
+    margin-top: 3rem;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.88em; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="mast">
+  <p class="eyebrow">Ideation</p>
+  <h1>Table 9 reanalysis</h1>
+  <p class="meta">
+    <span>Date <time datetime="2026-11-21">2026-11-21</time></span>
+    <span>Topic table-9-reanalysis</span>
+    <span>Mode repo-grounded</span>
+  </p>
+  <p class="meta">Focus: write the composition effect and the about +2.5 estimate, labelled as Eridho’s inference, with the nesting assumption stated.</p>
+  <ul class="stats">
+    <li>49 raw ideas</li>
+    <li>28 after dedupe</li>
+    <li>7 survivors</li>
+    <li>4 axes</li>
+  </ul>
+</header>
+
+<nav class="toc" aria-label="Sections">
+  <a href="#grounding-context">Grounding Context</a>
+  · <a href="#topic-axes">Topic Axes</a>
+  · <a href="#ranked-ideas">Ranked Ideas</a>
+  · <a href="#rejection-summary">Rejection Summary</a>
+</nav>
+
+<section id="grounding-context">
+  <h2>Grounding Context</h2>
+  <div class="prose">
+    <p>The body of <code>paper/main.tex</code> is still empty. The reanalysis lives in <code>notes/handoff-2026-11-20.md</code> and as one-sentence bullets in <code>notes/outline.md</code>. Numbers were checked against Toolformer arXiv 2302.04761v1 on 21 Nov 2026. The PDF is not in the repo.</p>
+    <p>On T-REx, k=3 to k=10 moves the share of examples with a call from 82.8% to 98.1% and overall accuracy from 52.9 to 53.5. Accuracy on calls falls from 58.0 to 54.0. Accuracy without a call falls from 29.0 to 22.5. The handoff reads the overall score as the weighted average of those two rates, and it derives about 29.8 without a call and about 32.4 with one on the 15.3% newly called slice: about +2.5, with a rounding band of about +1.7 to +3.4.</p>
+    <p>Discussion is budgeted at 1.0 page and also holds the comparison table, selective calling, and the fix/break point. The conclusion is 0.3 page. The outline’s inference bullet already says “about +2.5” and the band, and it already says the figure is a net. It states only one nesting clause. The comparison cell in the handoff files the figure under “Eridho’s interpretation,” next to the composition effect.</p>
+  </div>
+</section>
+
+<section id="topic-axes">
+  <h2>Topic Axes</h2>
+  <ul>
+    <li>Composition effect — the drop in accuracy-on-calls is a change in who is called.</li>
+    <li>About +2.5 estimate — the author’s net figure on the newly called slice, with the rounding band.</li>
+    <li>Nesting assumption — the called set and the never-called tail stay put across k, and Toolformer does not confirm that.</li>
+    <li>Claim boundary and placement — which sentence is evidence, which is inference, and which section may say it.</li>
+  </ul>
+</section>
+
+<section id="ranked-ideas">
+  <h2>Ranked Ideas</h2>
+  <ol class="jump">
+    <li><a href="#idea-1">State both nesting legs</a></li>
+    <li><a href="#idea-2">Keep about +2.5 out of the comparison cell</a></li>
+    <li><a href="#idea-3">Move “harder” onto the inference sentence</a></li>
+    <li><a href="#idea-4">Print both levels, and name the residual</a></li>
+    <li><a href="#idea-5">Leave the formulas in the notes</a></li>
+    <li><a href="#idea-6">Fence WebQS as a flat-All clause</a></li>
+    <li><a href="#idea-7">Open on what Table 9 does not identify</a></li>
+  </ol>
+
+  <article class="idea" id="idea-1">
+    <h3>1. State both nesting legs</h3>
+    <p>The inference sentence states two clauses, and it says Toolformer confirms neither. Questions called at k=3 are still called at k=10, and that subset still scores 58.0. The 1.9% never called at k=10 also scored 22.5 at k=3. “Still called with the same outcome” is not enough, because the without-call residual uses the second clause and the with-call residual uses the score, which the definition of k does not supply. The conclusion names both clauses. It does not replace them with the outline’s shorter line, and it does not repeat the arithmetic.</p>
+    <figure class="diagram">
+      <svg viewBox="0 0 640 168" role="img" aria-label="Two nesting clauses feed two different residuals">
+        <rect x="16" y="16" width="290" height="52" rx="8" fill="#e7eef6" stroke="#1e3a5f"/>
+        <text x="161" y="38" text-anchor="middle" font-size="13" font-family="Georgia, serif" fill="#1c1917">Called at k=3 still scores 58.0</text>
+        <text x="161" y="56" text-anchor="middle" font-size="12" font-family="Georgia, serif" fill="#1c1917">feeds the with-call residual</text>
+        <rect x="334" y="16" width="290" height="52" rx="8" fill="#f8efe3" stroke="#1e3a5f"/>
+        <text x="479" y="38" text-anchor="middle" font-size="13" font-family="Georgia, serif" fill="#1c1917">1.9% never called scored 22.5</text>
+        <text x="479" y="56" text-anchor="middle" font-size="12" font-family="Georgia, serif" fill="#1c1917">feeds the without-call residual</text>
+        <rect x="150" y="100" width="340" height="48" rx="8" fill="#fffdf8" stroke="#1e3a5f"/>
+        <text x="320" y="129" text-anchor="middle" font-size="13" font-family="Georgia, serif" fill="#1c1917">Outline limitation keeps only the left clause</text>
+      </svg>
+      <figcaption>Each residual uses a different clause. The outline’s limitation keeps one of them.</figcaption>
+    </figure>
+    <dl class="fields">
+      <dt>Axis</dt><dd>Nesting assumption</dd>
+      <dt>Basis</dt><dd>direct: <code>notes/handoff-2026-11-20.md:66</code> — “every question called at k=3 is still called at k=10 with the same outcome (that subset still scores 58.0), and the 1.9% never called also scored 22.5 at k=3. The paper does not confirm this.” The outline limitation stops at “still called at k=10 with the same outcome” (<code>notes/outline.md:66</code>). The without-call line is <code>notes/handoff-2026-11-20.md:65</code>.</dd>
+      <dt>Rationale</dt><dd>The number the passage is asked to report uses both clauses. A one-clause limitation hedges less than the estimate requires, and a reader of only the conclusion would not see the 22.5 term.</dd>
+      <dt>Downsides</dt><dd>Two clauses cost a line in a 1.0-page Discussion and another in a 0.3-page conclusion. Expanding “same outcome” into “still scores 58.0” is longer than the outline’s current bullet.</dd>
+      <dt>Confidence</dt><dd>90%</dd>
+      <dt>Complexity</dt><dd>Low</dd>
+    </dl>
+  </article>
+
+  <article class="idea" id="idea-2">
+    <h3>2. Keep about +2.5 out of the comparison cell</h3>
+    <p>The Toolformer interpretation cell keeps the composition clause only: the drop in accuracy-on-calls is a mix, and it does not show that calls got worse. About +2.5 appears once, in the Discussion sentence that also states both nesting clauses, the band, and that the figure is a net. The cell can point at that sentence. It does not carry the figure, the band, or the word “questions newly called.”</p>
+    <figure class="diagram">
+      <svg viewBox="0 0 640 150" role="img" aria-label="Comparison cell before and after removing the estimate">
+        <text x="16" y="22" font-size="12" font-family="Segoe UI, sans-serif" fill="#57534e">Cell as written</text>
+        <rect x="16" y="32" width="290" height="96" rx="8" fill="#f8efe3" stroke="#1e3a5f"/>
+        <text x="32" y="58" font-size="13" font-family="Georgia, serif" fill="#1c1917">Composition effect</text>
+        <text x="32" y="80" font-size="13" font-family="Georgia, serif" fill="#1c1917">and about +2.5</text>
+        <text x="32" y="106" font-size="12" font-family="Georgia, serif" fill="#1c1917">one quoted cell, two labels</text>
+        <text x="334" y="22" font-size="12" font-family="Segoe UI, sans-serif" fill="#57534e">Cell under this move</text>
+        <rect x="334" y="32" width="290" height="96" rx="8" fill="#e6f2ea" stroke="#1e3a5f"/>
+        <text x="350" y="58" font-size="13" font-family="Georgia, serif" fill="#1c1917">Composition effect only</text>
+        <text x="350" y="80" font-size="13" font-family="Georgia, serif" fill="#1c1917">points at the inference sentence</text>
+        <text x="350" y="106" font-size="12" font-family="Georgia, serif" fill="#1c1917">the figure stays with the assumption</text>
+      </svg>
+      <figcaption>A table cell is what gets lifted out. The figure needs the sentence that states the assumption.</figcaption>
+    </figure>
+    <dl class="fields">
+      <dt>Axis</dt><dd>Claim boundary and placement</dd>
+      <dt>Basis</dt><dd>direct: <code>notes/handoff-2026-11-20.md:43</code> — “About +2.5 percentage points on the questions newly called between k=3 and k=10. The drop in accuracy-on-calls is a composition effect.” Beside it, line 46 separates evidence, interpretation, and speculation. <code>notes/outline.md:57</code> is the interpretation bullet and <code>notes/outline.md:58</code> is the inference bullet.</dd>
+      <dt>Rationale</dt><dd>The passage is supposed to label the estimate as Eridho’s inference. The cell currently gives that number the same rank as the mix reading, and it omits the assumption and the band.</dd>
+      <dt>Downsides</dt><dd>The contribution is harder to see in the table alone. A reader who only scans the grid will not find the number that the introduction promised as a reanalysis.</dd>
+      <dt>Confidence</dt><dd>88%</dd>
+      <dt>Complexity</dt><dd>Low</dd>
+    </dl>
+  </article>
+
+  <article class="idea" id="idea-3">
+    <h3>3. Move “harder” onto the inference sentence</h3>
+    <p>The composition sentence stops where the cells stop. Overall accuracy is the weighted average of accuracy-on-calls and accuracy-without-a-call, so accuracy-on-calls can fall from 58.0 to 54.0 while the overall score still rises. That drop does not show that calls got worse. The cause — the newly called questions are harder — waits for the inference sentence, because it talks about a set of questions, and that set exists only under the nesting assumption.</p>
+    <figure class="diagram">
+      <svg viewBox="0 0 640 132" role="img" aria-label="What the composition sentence may say and what waits">
+        <rect x="16" y="16" width="300" height="100" rx="8" fill="#e6f2ea" stroke="#1e3a5f"/>
+        <text x="32" y="42" font-size="13" font-family="Georgia, serif" fill="#1c1917">Composition sentence</text>
+        <text x="32" y="66" font-size="13" font-family="Georgia, serif" fill="#1c1917">weighted average</text>
+        <text x="32" y="90" font-size="13" font-family="Georgia, serif" fill="#1c1917">the drop is not worse calls</text>
+        <rect x="336" y="16" width="288" height="100" rx="8" fill="#e7eef6" stroke="#1e3a5f"/>
+        <text x="352" y="42" font-size="13" font-family="Georgia, serif" fill="#1c1917">Inference sentence</text>
+        <text x="352" y="66" font-size="13" font-family="Georgia, serif" fill="#1c1917">“harder,” both nesting legs</text>
+        <text x="352" y="90" font-size="13" font-family="Georgia, serif" fill="#1c1917">about +2.5, band, net</text>
+      </svg>
+      <figcaption>The average is fixed by the cells. The cause is not.</figcaption>
+    </figure>
+    <dl class="fields">
+      <dt>Axis</dt><dd>Composition effect</dd>
+      <dt>Basis</dt><dd>direct: <code>notes/handoff-2026-11-20.md:62</code> — “AC falls from 58.0 to 54.0 because the questions that newly receive a call at k=10 are harder. ‘All’ is the weighted average of AC and NC. The drop does not show that calls got worse.” <code>notes/outline.md:57</code> keeps “because the newly called questions are harder” in the interpretation bullet, before the assumption in line 58.</dd>
+      <dt>Rationale</dt><dd>Left where it is, “harder” reads as something Table 9 measured. The cells support the mix. They do not identify which questions entered the called set.</dd>
+      <dt>Downsides</dt><dd>The composition sentence becomes less vivid. A seminar reader may want the cause in the same breath as the drop, which is how both the handoff and the outline write it now.</dd>
+      <dt>Confidence</dt><dd>84%</dd>
+      <dt>Complexity</dt><dd>Low</dd>
+    </dl>
+  </article>
+
+  <article class="idea" id="idea-4">
+    <h3>4. Print both levels, and name the residual</h3>
+    <p>The inference sentence says the newly called slice is about 29.8 without a call and about 32.4 with one, so about +2.5, and rounding alone runs from about +1.7 to +3.4. It says what 29.8 is: the k=3 group with no call, after the never-called tail is removed. It is not 34.9, the tools-off row, and it is not 29.0, the whole k=3 no-call group. The figure stays labelled as Eridho’s inference and as a net that cannot separate fixes from breaks.</p>
+    <figure class="diagram">
+      <svg viewBox="0 0 640 148" role="img" aria-label="Three numbers a reader might use as the counterfactual">
+        <rect x="16" y="12" width="608" height="36" rx="8" fill="#f8efe3" stroke="#1e3a5f"/>
+        <text x="32" y="35" font-size="13" font-family="Georgia, serif" fill="#1c1917">34.9 — tools off. A different question.</text>
+        <rect x="16" y="56" width="608" height="36" rx="8" fill="#f8efe3" stroke="#1e3a5f"/>
+        <text x="32" y="79" font-size="13" font-family="Georgia, serif" fill="#1c1917">29.0 — everyone without a call at k=3. A larger set.</text>
+        <rect x="16" y="100" width="608" height="36" rx="8" fill="#e6f2ea" stroke="#1e3a5f"/>
+        <text x="32" y="123" font-size="13" font-family="Georgia, serif" fill="#1c1917">about 29.8 — the residual on the newly called slice.</text>
+      </svg>
+      <figcaption>The outline’s inference bullet currently skips the two levels and names only about +2.5.</figcaption>
+    </figure>
+    <dl class="fields">
+      <dt>Axis</dt><dd>About +2.5 estimate</dd>
+      <dt>Basis</dt><dd>direct: <code>notes/handoff-2026-11-20.md:63</code> gives about 29.8 and about 32.4. Line 65 is “(17.2 × 29.0 − 1.9 × 22.5) / 15.3”. The k=0 row is 34.9 and the k=3 no-call cell is 29.0 (lines 54 and 56). <code>notes/outline.md:58</code> states the gain and the band and does not state either level.</dd>
+      <dt>Rationale</dt><dd>About +2.5 is a difference. Without the two levels, a reader can rebuild it from the wrong cell and still feel they are using Table 9. The handoff already computes the residual; the outline bullet that will become the sentence does not show it.</dd>
+      <dt>Downsides</dt><dd>Two extra numbers in a tight paragraph. They look like reported cells if the sentence does not say they are derived. This move and the next one have to be chosen together: the levels can appear without the multiplications.</dd>
+      <dt>Confidence</dt><dd>76%</dd>
+      <dt>Complexity</dt><dd>Low</dd>
+    </dl>
+  </article>
+
+  <article class="idea" id="idea-5">
+    <h3>5. Leave the formulas in the notes</h3>
+    <p>The printed reanalysis is two sentences. Section 4 states the reported movement: call share 82.8% to 98.1%, overall accuracy 52.9 to 53.5. The Discussion sentence states the inference under both nesting clauses, including both levels if that move is kept, the band, and the net. The two divisions stay in the handoff. Discussion still has to hold the comparison table, selective calling, and the fix/break point inside 1.0 page.</p>
+    <dl class="fields">
+      <dt>Axis</dt><dd>Claim boundary and placement</dd>
+      <dt>Basis</dt><dd>direct: <code>notes/outline.md:7</code> — “Discussion 1.0 · Conclusion 0.3.” The formulas are <code>notes/handoff-2026-11-20.md:64</code> and <code>:65</code>. <code>notes/outline.md:48</code> is already the evidence sentence, and lines 57–58 are already the two Discussion claims. A citation of the page budget as if it were itself a two-sentence rule does not hold; the budget is what makes the formulas the part that does not fit.</dd>
+      <dt>Rationale</dt><dd>Writing the algebra into the body pushes selective calling or the fix/break point off the page. A reader who has the cells and the stated assumption can be pointed at the notes for the arithmetic.</dd>
+      <dt>Downsides</dt><dd>The paper then does not let a reader recompute about +2.5. A grader who wants the derivation on the page loses it. Pairing this with the previous idea means the sentence names 29.8 and 32.4 and still hides the multiplications.</dd>
+      <dt>Confidence</dt><dd>70%</dd>
+      <dt>Complexity</dt><dd>Low</dd>
+    </dl>
+  </article>
+
+  <article class="idea" id="idea-6">
+    <h3>6. Fence WebQS as a flat-All clause</h3>
+    <p>If WebQS appears, it appears once, as evidence: from k=3 to k=10 the call rate goes from 99.3% to 100% and accuracy stays 26.3. That clause can sit with the T-REx evidence sentence. It does not enter the composition sentence and it does not get its own about +2.5. The notes give no WebQS accuracy-on-calls or accuracy-without-a-call, so the mix reading and the residual are T-REx only. If the page is already full, the clause is the first cut.</p>
+    <dl class="fields">
+      <dt>Axis</dt><dd>Composition effect</dd>
+      <dt>Basis</dt><dd>direct: <code>notes/handoff-2026-11-20.md:59</code> — “WebQS: k=3 to k=10 raises the call rate from 99.3% to 100%, and accuracy stays at 26.3.” The outline’s Table 9 bullets (<code>notes/outline.md:48</code>, <code>:57</code>, <code>:58</code>) do not mention WebQS.</dd>
+      <dt>Rationale</dt><dd>The clause shows that a call share already near 100% can leave overall accuracy still, which is the same table’s other row. Using it as a second composition effect would claim a split the notes do not have.</dd>
+      <dt>Downsides</dt><dd>One more dataset in a sentence that is supposed to stay short. A reader may still hear it as the same claim as the T-REx mix unless the fence is explicit.</dd>
+      <dt>Confidence</dt><dd>68%</dd>
+      <dt>Complexity</dt><dd>Low</dd>
+    </dl>
+  </article>
+
+  <article class="idea" id="idea-7">
+    <h3>7. Open on what Table 9 does not identify</h3>
+    <p>The Discussion paragraph opens on the unidentified sets: whether the k=3 called questions are still called at k=10 and still score 58.0, and whether the 1.9% never called already scored 22.5 at k=3. Toolformer does not confirm either. About +2.5, the two levels, and the band sit in a parenthetical on that sentence, still labelled as Eridho’s inference, still a net. A reader who skips the parenthetical still leaves with the assumption.</p>
+    <dl class="fields">
+      <dt>Axis</dt><dd>Nesting assumption</dd>
+      <dt>Basis</dt><dd>direct: <code>notes/handoff-2026-11-20.md:66</code> states the assumption and “The paper does not confirm this.” <code>notes/outline.md:58</code> already begins “Assuming…,” but the grammatical point of that bullet is still the about +2.5 gain. The notes do not require the number to become a parenthetical. reasoned: whichever clause is the main clause is the one a seminar reader repeats, and the introduction’s contribution is easy to quote without the proviso if the number leads.</dd>
+      <dt>Rationale</dt><dd>This is the alternative to result-then-caveat. It matches the request to label the figure as an inference whose assumption is stated, by making the assumption the sentence rather than the rider.</dd>
+      <dt>Downsides</dt><dd>It fights the evidence-first sentence in idea 5 and the outline’s habit of leading with a reported delta. The contribution the introduction names can disappear into a caveat. Confidence stays lower because the notes do not prescribe this order.</dd>
+      <dt>Confidence</dt><dd>60%</dd>
+      <dt>Complexity</dt><dd>Low</dd>
+    </dl>
+  </article>
+</section>
+
+<section id="rejection-summary">
+  <h2>Rejection Summary</h2>
+  <table>
+    <thead>
+      <tr><th>#</th><th>Idea</th><th>Reason rejected</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Lead with the weighted average and “not worse calls”</td><td>Already the composition bullet. The open choice is only where “harder” sits.</td></tr>
+      <tr><td>2</td><td>Name the drop in both conditional rates</td><td>The weighted-average sentence already has to use both rates. A separate NC-drop move does not change the claim.</td></tr>
+      <tr><td>3</td><td>Headline the two k steps</td><td>The handoff and the §4 evidence bullet already report k=1→3 and k=3→10.</td></tr>
+      <tr><td>4</td><td>Put the rounding band in the same clause as the center</td><td>The outline’s inference bullet already includes about +1.7 to +3.4.</td></tr>
+      <tr><td>5</td><td>Give +0.6 and about +2.5 different subjects</td><td>The evidence bullet and the inference bullet already use different claims and different verbs.</td></tr>
+      <tr><td>6</td><td>Label the back-out so it is not a fifth column</td><td>The handoff already says the figure is Eridho’s, not the paper’s. Printing the two levels is kept separately.</td></tr>
+      <tr><td>7</td><td>Hang a net-only sign on the estimate</td><td>The outline and the handoff already say the net cannot separate fixes from breaks.</td></tr>
+      <tr><td>8</td><td>Separate k’s definition from the score</td><td>Folded into the nesting idea: “same outcome” has to say the subset still scores 58.0.</td></tr>
+      <tr><td>9</td><td>Conclusion only names the assumption</td><td>Kept inside the nesting idea, which forbids a shorter second definition.</td></tr>
+      <tr><td>10</td><td>Reprint both clauses in the conclusion and not the number</td><td>A 0.3-page conclusion cannot be a second proof. The nesting idea already blocks the one-legged line.</td></tr>
+      <tr><td>11</td><td>§4 evidence airlock</td><td>The outline already limits the Toolformer Table 9 sentence to the cells and the authors’ calibration remark.</td></tr>
+      <tr><td>12</td><td>Evidence, then interpretation, then inference</td><td>The handoff’s label rule and the outline’s two Discussion bullets already set that order.</td></tr>
+      <tr><td>13</td><td>Introduction names the reanalysis, not the figure</td><td>The introduction bullet already says the paper reanalyses Table 9 and does not quote the figure.</td></tr>
+      <tr><td>14</td><td>Two-sentence body cited as if the page-budget line were that rule</td><td>That line is the 1.0-page budget, not a sentence count. The cut itself is kept, grounded on the budget and the length of the two formulas.</td></tr>
+      <tr><td>15</td><td>Display the identity on its own line</td><td>Discussion already spends its table on the comparison. The identity belongs in the composition sentence.</td></tr>
+      <tr><td>16</td><td>Four Discussion slots must not share numbers</td><td>The handoff already assigns the slots. The live leak is the comparison cell, kept as its own idea.</td></tr>
+      <tr><td>17</td><td>Let the page budget assign the slots</td><td>The outline and the handoff already do that.</td></tr>
+      <tr><td>18</td><td>One package: identity, then inference, figure stays home</td><td>The open parts are the ranked ideas. The package restates splits the handoff already writes.</td></tr>
+      <tr><td>19</td><td>Fence WebQS, the residual, fix/break, and the slots together</td><td>Fix/break and the slots are already fenced. WebQS and the residual are ranked on their own.</td></tr>
+      <tr><td>20</td><td>Identity line, two sentences, and no second table as one bundle</td><td>The bundle depends on a displayed line the comparison table already rules out.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<footer class="composition-signal">Composed 2026-11-21T08:51Z by ce-ideate from the focus hint on the Table 9 reanalysis.</footer>
+</div>
+</body>
+</html>

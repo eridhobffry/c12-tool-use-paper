@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ideation: Section 5 comparison table</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&amp;family=Source+Sans+3:wght@400;600;700&amp;display=swap">
+  <style>
+    :root {
+      --bg: #f6f3ee;
+      --ink: #1c1917;
+      --muted: #44403c;
+      --card: #fffcf8;
+      --line: #d6d3d1;
+      --accent: #1e3a5f;
+      --accent-soft: #e7eef6;
+      --warn-soft: #f4efe4;
+      --ok-soft: #e7f0ea;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+      font-size: 17px;
+      line-height: 1.55;
+    }
+    .wrap { max-width: 920px; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+    header.mast { margin-bottom: 2rem; }
+    .eyebrow {
+      font-family: "Source Sans 3", "Segoe UI", sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 0.4rem;
+    }
+    h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 0.8rem; font-weight: 700; }
+    h2 { font-size: 1.35rem; margin: 2.2rem 0 0.8rem; font-weight: 700; }
+    h3 { font-size: 1.15rem; margin: 0; font-weight: 700; }
+    p { max-width: 70ch; }
+    strong { font-weight: 700; color: inherit; }
+    a { color: var(--accent); }
+    code {
+      font-family: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+      font-size: 0.86em;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      font-family: "Source Sans 3", "Segoe UI", sans-serif;
+      font-size: 0.85rem;
+    }
+    .chip {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 0.2rem 0.7rem;
+      font-weight: 600;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin: 1.4rem 0 0;
+    }
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 0.75rem 0.9rem;
+    }
+    .stat b {
+      display: block;
+      font-family: "Source Sans 3", "Segoe UI", sans-serif;
+      font-size: 1.35rem;
+    }
+    .stat span {
+      font-family: "Source Sans 3", "Segoe UI", sans-serif;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    section { margin-top: 0.5rem; }
+    .jump { font-family: "Source Sans 3", "Segoe UI", sans-serif; font-size: 0.95rem; padding-left: 1.2rem; }
+    article.idea {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1.1rem 1.2rem 1.2rem;
+      margin: 1rem 0;
+    }
+    article.idea dl { margin: 0.8rem 0 0; }
+    article.idea dt {
+      font-family: "Source Sans 3", "Segoe UI", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 0.85rem;
+    }
+    article.idea dd { margin: 0.2rem 0 0; max-width: 70ch; }
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.7rem;
+    }
+    .pill {
+      font-family: "Source Sans 3", "Segoe UI", sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border-radius: 999px;
+      padding: 0.15rem 0.6rem;
+      background: var(--ok-soft);
+      color: #14532d;
+    }
+    .pill.warn { background: var(--warn-soft); color: #78350f; }
+    figure { margin: 1rem 0 0; max-width: 100%; }
+    figure svg { width: 100%; height: auto; display: block; }
+    figcaption {
+      font-family: "Source Sans 3", "Segoe UI", sans-serif;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 0.35rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card);
+      font-family: "Source Sans 3", "Segoe UI", sans-serif;
+      font-size: 0.92rem;
+    }
+    th, td { border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; padding: 0.55rem 0.6rem; }
+    th { font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); }
+    footer.composition-signal {
+      margin-top: 3rem;
+      font-family: "Source Sans 3", "Segoe UI", sans-serif;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    @media (max-width: 640px) {
+      .stats { grid-template-columns: 1fr; }
+      h1 { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="mast">
+      <p class="eyebrow">Ideation</p>
+      <h1>Section 5 comparison table</h1>
+      <div class="meta">
+        <span class="chip">2026-11-21</span>
+        <span class="chip">section-5-comparison-table</span>
+        <span class="chip">repo-grounded</span>
+      </div>
+      <p>Focus: presentation of the Discussion comparison of ReAct and Toolformer. The four rows and their claims stay as written in the handoff. The open choices are column width, how much text stays in a cell, how a cell cites a source table or section, and whether the interpretation row stays in the grid.</p>
+      <div class="stats">
+        <div class="stat"><b>48</b><span>raw ideas</span></div>
+        <div class="stat"><b>25</b><span>after combining duplicates</span></div>
+        <div class="stat"><b>6</b><span>kept</span></div>
+      </div>
+    </header>
+
+    <section id="grounding-context">
+      <h2>Grounding Context</h2>
+      <p>The paper is an ACL two-column seminar paper. The body may run to 4 pages. <code>paper/main.tex</code> loads <code>booktabs</code>. The Discussion is still a TODO, so this table does not exist in the source yet. <code>template/formatting.md</code> sets a column at 7.7 cm wide and 24.7 cm tall, with a 0.6 cm gap, and allows a full-width table. Document text is 11 pt. Captions are 10 pt and sit under the float. Critical distinctions in a table should not depend on color alone.</p>
+      <p>The cell text is fixed in <code>notes/handoff-2026-11-20.md</code> (the evidence table, lines 39–44). Demonstrated, Measured proxy, and Not measured are source-anchored. The interpretation row is Eridho’s, including “about +2.5”, and the line under the table says to label evidence, interpretation, and speculation apart. The outline still names those four rows as one grid with one column per paper, and it also plans separate Discussion bullets for the composition effect and the Table 9 reanalysis. No local note says when a cell is too long, and no local note chooses <code>Tab.</code> over <code>(Table 1)</code>.</p>
+      <p>A full-width float of height <em>h</em> uses that height in both columns. A quarter of one page of area is about 12.35 column-centimetres (0.25 × 2 × 24.7). That is about 6.2 cm of a full-width float, or about 12.3 cm of a single-column float. The quarter-page target is the success line for this table, not a sentence in the handoff. Discussion as a whole is budgeted at about one page, and it still has to carry the axis, composition, reanalysis, and selective-calling bullets.</p>
+    </section>
+
+    <section id="topic-axes">
+      <h2>Topic Axes</h2>
+      <ul>
+        <li>Column width</li>
+        <li>Cell length</li>
+        <li>Source pointers in cells</li>
+        <li>Where the interpretation row sits</li>
+      </ul>
+    </section>
+
+    <section id="ranked-ideas">
+      <h2>Ranked Ideas</h2>
+      <ol class="jump">
+        <li><a href="#i1">I1. Evidence grid, reading inside the float</a></li>
+        <li><a href="#i2">I2. Full-width ledger, checked at about 6 cm</a></li>
+        <li><a href="#i3">I3. One traced unit per line</a></li>
+        <li><a href="#i4">I4. Keep the reading in the grid, and mark it</a></li>
+        <li><a href="#i5">I5. Move the pointers into one legend</a></li>
+        <li><a href="#i6">I6. Two paper cards in a single column</a></li>
+      </ol>
+
+      <article class="idea" id="i1">
+        <h3>I1. Evidence grid, reading inside the float</h3>
+        <div class="meta-row">
+          <span class="pill">Where the interpretation row sits</span>
+          <span class="pill">80%</span>
+          <span class="pill warn">Medium</span>
+        </div>
+        <figure>
+          <svg viewBox="0 0 640 250" role="img" aria-labelledby="cap1">
+            <rect x="16" y="12" width="608" height="226" rx="10" fill="#e7eef6" stroke="#1e3a5f"/>
+            <text x="32" y="36" fill="#1e3a5f" font-size="13" font-family="Source Sans 3, sans-serif" font-weight="700">Inside the float</text>
+            <rect x="32" y="48" width="576" height="112" fill="#fffcf8" stroke="#1c1917"/>
+            <text x="44" y="72" fill="#1c1917" font-size="13" font-family="Source Sans 3, sans-serif">Demonstrated</text>
+            <text x="230" y="72" fill="#1c1917" font-size="13" font-family="Source Sans 3, sans-serif">ReAct, with (Table 1)</text>
+            <text x="430" y="72" fill="#1c1917" font-size="13" font-family="Source Sans 3, sans-serif">Toolformer, Table 4 and 9</text>
+            <line x1="32" y1="84" x2="608" y2="84" stroke="#1c1917"/>
+            <text x="44" y="108" fill="#1c1917" font-size="13" font-family="Source Sans 3, sans-serif">Measured proxy</text>
+            <text x="230" y="108" fill="#1c1917" font-size="13" font-family="Source Sans 3, sans-serif">Fig. 2</text>
+            <text x="430" y="108" fill="#1c1917" font-size="13" font-family="Source Sans 3, sans-serif">Tables 3–9</text>
+            <line x1="32" y1="120" x2="608" y2="120" stroke="#1c1917"/>
+            <text x="44" y="144" fill="#1c1917" font-size="13" font-family="Source Sans 3, sans-serif">Not measured</text>
+            <text x="230" y="144" fill="#1c1917" font-size="13" font-family="Source Sans 3, sans-serif">step limit only</text>
+            <text x="430" y="144" fill="#1c1917" font-size="13" font-family="Source Sans 3, sans-serif">cost ignored, §7</text>
+            <text x="32" y="184" fill="#1c1917" font-size="13" font-family="Source Sans 3, sans-serif" font-weight="700">Note under the rules, still in the float</text>
+            <text x="32" y="206" fill="#1c1917" font-size="13" font-family="Source Sans 3, sans-serif">Eridho’s interpretation, four sentences, unchanged</text>
+            <text x="32" y="226" fill="#44403c" font-size="12" font-family="Source Sans 3, sans-serif">Caption: cell numbers belong to Yao et al. or Schick et al.</text>
+          </svg>
+          <figcaption id="cap1">Three evidence rows stay inside the rules. The reading travels with the float, outside those rules.</figcaption>
+        </figure>
+        <dl>
+          <dt>Description</dt>
+          <dd>Set Demonstrated, Measured proxy, and Not measured in a full-width <code>table*</code>. Move the four interpretation sentences, word for word, into a note inside the same float, under the tabular and above or inside the caption. Lead that note with “Eridho’s interpretation.” The caption also says that every table, figure, and section number in the cells belongs to Yao et al. (2023) or Schick et al. (2023). Do not add “(Table 9)” to the +2.5 sentence. Leave 58.0, 54.0, and the +1.7 to +3.4 band in the Discussion bullets.</dd>
+          <dt>Axis</dt>
+          <dd>Where the interpretation row sits</dd>
+          <dt>Basis</dt>
+          <dd>direct: the four interpretation sentences are <code>notes/handoff-2026-11-20.md:43</code>, and line 46 says to label interpretation apart from measured evidence. direct: line 63 calls +2.5 his inference, not the paper’s. direct: <code>template/formatting.md:90</code> and <code>:186</code> allow a full-width table, and <code>:198</code> numbers the first caption “Table 1”. direct: <code>paper/main.tex</code> Discussion is still TODO, so this float will be Table 1 while the cells also say “(Table 1)” for ReAct. reasoned: a sentence left in the following paragraph can land in the other column when the float moves; text inside the float stays with the grid, which is what “readable without the prose” requires.</dd>
+          <dt>Rationale</dt>
+          <dd>“About +2.5” would otherwise sit in the same ruled grid as ASDiv 40.4 vs. 14.8. The note keeps every word, marks it as his, and still lets a reader who never sees the Discussion recover the reading. The caption stops “(Table 1)” from naming two different tables.</dd>
+          <dt>Downsides</dt>
+          <dd>The handoff and the outline currently draw this as a fourth row of one grid. The note still spends height inside the quarter-page budget. The outline bullets will repeat some of these sentences unless he shortens those bullets when he writes them.</dd>
+          <dt>Confidence</dt>
+          <dd>80%</dd>
+          <dt>Complexity</dt>
+          <dd>Medium</dd>
+        </dl>
+      </article>
+
+      <article class="idea" id="i2">
+        <h3>I2. Full-width ledger, checked at about 6 cm</h3>
+        <div class="meta-row">
+          <span class="pill">Column width</span>
+          <span class="pill">88%</span>
+          <span class="pill">Low</span>
+        </div>
+        <figure>
+          <svg viewBox="0 0 640 200" role="img" aria-labelledby="cap2">
+            <rect x="24" y="20" width="250" height="160" fill="#fffcf8" stroke="#1c1917"/>
+            <line x1="149" y1="20" x2="149" y2="180" stroke="#1c1917"/>
+            <rect x="24" y="36" width="250" height="48" fill="#e7eef6" stroke="#1e3a5f"/>
+            <text x="36" y="64" fill="#1e3a5f" font-size="13" font-family="Source Sans 3, sans-serif">table* · about 6 cm</text>
+            <text x="36" y="156" fill="#1c1917" font-size="12" font-family="Source Sans 3, sans-serif">both columns blocked</text>
+            <rect x="340" y="20" width="120" height="160" fill="#fffcf8" stroke="#1c1917"/>
+            <rect x="476" y="20" width="120" height="160" fill="#f6f3ee" stroke="#a8a29e"/>
+            <rect x="348" y="36" width="104" height="110" fill="#f4efe4" stroke="#78350f"/>
+            <text x="356" y="78" fill="#78350f" font-size="12" font-family="Source Sans 3, sans-serif">single</text>
+            <text x="356" y="96" fill="#78350f" font-size="12" font-family="Source Sans 3, sans-serif">column</text>
+            <text x="356" y="114" fill="#78350f" font-size="12" font-family="Source Sans 3, sans-serif">about 12 cm</text>
+            <text x="488" y="100" fill="#44403c" font-size="12" font-family="Source Sans 3, sans-serif">prose can</text>
+            <text x="488" y="118" fill="#44403c" font-size="12" font-family="Source Sans 3, sans-serif">sit beside it</text>
+          </svg>
+          <figcaption id="cap2">The same quarter page of area is a short band across both columns, or a tall float in one column.</figcaption>
+        </figure>
+        <dl>
+          <dt>Description</dt>
+          <dd>Use one <code>table*</code> with <code>booktabs</code>, 11 pt text, a narrow stub, and two <code>p{}</code> columns for the papers. Do not use <code>resizebox</code> or <code>tabularx</code>; neither is in the repo. Before locking the cell wording, check the whole float, caption included, against about 6 cm. Any handoff sentence that leaves a cell is set inside that same float, after the tabular. The caption states that the numbers are the source papers’ table, figure, and section numbers. Headers can be “ReAct” and “Toolformer”; “Yao et al., 2023” and “Schick et al., 2023” can move into that caption. If the stub “Eridho’s interpretation” stays unwrapped, stop trying to fit three columns into 7.7 cm.</dd>
+          <dt>Axis</dt>
+          <dd>Column width</dd>
+          <dt>Basis</dt>
+          <dd>direct: <code>template/formatting.md:98–100</code> (7.7 cm, 24.7 cm, 0.6 cm gap), <code>:121</code> (document text 11 pt), <code>:122</code> and <code>:200</code> (captions 10 pt), <code>:186</code> (wide tables may cross both columns). direct: the handoff cells at lines 41–42 are sentences, not the short token pairs in the template’s single-column <code>tabular{lc}</code> demo. reasoned: 0.25 × 2 × 24.7 cm = 12.35 column-centimetres, so a full-width float that is a quarter of the page area is about 6.2 cm tall.</dd>
+          <dt>Rationale</dt>
+          <dd>This is the decision the other five sit on. A three-column grid inside one 7.7 cm column makes the Toolformer cells a wrapped paragraph. Shrinking the type would fight the 11 pt rule. The height check stops the wide table from eating the Discussion bullets that the outline still owes.</dd>
+          <dt>Downsides</dt>
+          <dd>A 6 cm <code>table*</code> blocks both columns, so the prose cannot sit beside it. The 6 cm figure is area math from the quarter-page target. It is not printed in the handoff. Keeping every sentence inside that height will force I1 or I3.</dd>
+          <dt>Confidence</dt>
+          <dd>88%</dd>
+          <dt>Complexity</dt>
+          <dd>Low</dd>
+        </dl>
+      </article>
+
+      <article class="idea" id="i3">
+        <h3>I3. One traced unit per line</h3>
+        <div class="meta-row">
+          <span class="pill">Cell length</span>
+          <span class="pill">82%</span>
+          <span class="pill warn">Medium</span>
+        </div>
+        <figure>
+          <svg viewBox="0 0 640 168" role="img" aria-labelledby="cap3">
+            <rect x="20" y="16" width="290" height="136" fill="#fffcf8" stroke="#1c1917"/>
+            <text x="32" y="40" fill="#1c1917" font-size="13" font-family="Source Sans 3, sans-serif">ASDiv 40.4 vs. 14.8 (Table 4).</text>
+            <text x="32" y="62" fill="#1c1917" font-size="13" font-family="Source Sans 3, sans-serif">Diminishing returns (Table 9).</text>
+            <line x1="20" y1="80" x2="310" y2="80" stroke="#1c1917"/>
+            <text x="32" y="104" fill="#1c1917" font-size="13" font-family="Source Sans 3, sans-serif">Tokens, latency, money</text>
+            <text x="180" y="104" fill="#44403c" font-size="12" font-family="Source Sans 3, sans-serif">spans both papers</text>
+            <text x="32" y="128" fill="#1c1917" font-size="13" font-family="Source Sans 3, sans-serif">ReAct: step limit only</text>
+            <rect x="340" y="16" width="280" height="136" fill="#f4efe4" stroke="#78350f"/>
+            <text x="356" y="44" fill="#78350f" font-size="13" font-family="Source Sans 3, sans-serif" font-weight="700">Leaves the cell, stays in the float</text>
+            <text x="356" y="72" fill="#1c1917" font-size="13" font-family="Source Sans 3, sans-serif">Best combination order depends</text>
+            <text x="356" y="92" fill="#1c1917" font-size="13" font-family="Source Sans 3, sans-serif">on the task.</text>
+            <text x="356" y="116" fill="#1c1917" font-size="13" font-family="Source Sans 3, sans-serif">Large gains with tools enabled.</text>
+          </svg>
+          <figcaption id="cap3">Pointed results stay on their own lines. The two glosses with no source number leave the cell.</figcaption>
+        </figure>
+        <dl>
+          <dt>Description</dt>
+          <dd>Keep, in the Demonstrated cells, “Beats chain-of-thought on FEVER and trails it on HotpotQA (Table 1).” and, on two lines, “ASDiv 40.4 vs. 14.8 with tools disabled (Table 4).” and “Diminishing returns (Table 9).” Move, verbatim, into the float note: “Best combination order depends on the task.” and “Large gains with tools enabled.” Span “Tokens, latency, money” once across both paper columns. ReAct then keeps “average step count. Only a step limit is set.” Toolformer keeps “The authors say call decisions ignore tool-dependent cost (§7).” on its own line. Label the two section pointers “§7, yield” and “§7, cost”. Do not add a score column, and do not pull 60.9, 56.3, 27.4, or 29.4 into the table. Do not put “(Table 9)” on the +2.5 sentence. The yield sentence (“more than 1M documents…”) may join the float note; the outline already restates it as axis 2.</dd>
+          <dt>Axis</dt>
+          <dd>Cell length</dd>
+          <dt>Basis</dt>
+          <dd>direct: those strings are <code>notes/handoff-2026-11-20.md:41–44</code>. direct: 60.9 vs. 56.3 and 27.4 vs. 29.4 are in the numbered argument at line 28, not in the table. direct: both Not measured cells open with “Tokens, latency, money”, and the two “(§7)” marks attach to different claims (lines 42 and 44). direct: <code>notes/outline.md:55–56</code> already plans prose for the task-shaped gain and the yield.</dd>
+          <dt>Rationale</dt>
+          <dd>This is the rule for how much text a cell holds. Each remaining line traces to one source. The shared absence is stated once. The two §7s stop a reader from treating yield and cost as one limitation. Nothing is deleted.</dd>
+          <dt>Downsides</dt>
+          <dd>If I1 also moves the four interpretation sentences, the float note gets long and may break the 6 cm check in I2. “Large gains with tools enabled” has no table number, so moving it is a judgment, not a traceability rule. A spanned “tokens, latency, money” is slightly harder to read as two independent cells.</dd>
+          <dt>Confidence</dt>
+          <dd>82%</dd>
+          <dt>Complexity</dt>
+          <dd>Medium</dd>
+        </dl>
+      </article>
+
+      <article class="idea" id="i4">
+        <h3>I4. Keep the reading in the grid, and mark it</h3>
+        <div class="meta-row">
+          <span class="pill">Where the interpretation row sits</span>
+          <span class="pill">78%</span>
+          <span class="pill">Low</span>
+        </div>
+        <figure>
+          <svg viewBox="0 0 640 188" role="img" aria-labelledby="cap4">
+            <rect x="24" y="16" width="592" height="156" fill="#fffcf8" stroke="#1c1917"/>
+            <text x="40" y="44" fill="#1c1917" font-size="14" font-family="Source Sans 3, sans-serif">Demonstrated</text>
+            <text x="40" y="72" fill="#1c1917" font-size="14" font-family="Source Sans 3, sans-serif">Measured proxy</text>
+            <line x1="24" y1="88" x2="616" y2="88" stroke="#1c1917" stroke-width="2"/>
+            <text x="40" y="116" fill="#1c1917" font-size="14" font-family="Source Serif 4, Georgia, serif" font-style="italic">Eridho’s interpretation</text>
+            <text x="280" y="116" fill="#1c1917" font-size="14" font-family="Source Serif 4, Georgia, serif" font-style="italic">about +2.5, his reading</text>
+            <text x="40" y="148" fill="#1c1917" font-size="14" font-family="Source Sans 3, sans-serif">Not measured</text>
+          </svg>
+          <figcaption id="cap4">The reading stays a row. A rule and italics mark it, which still works in grayscale.</figcaption>
+        </figure>
+        <dl>
+          <dt>Description</dt>
+          <dd>Keep all four handoff rows, word for word, in one tabular. Insert a <code>\midrule</code> before “Eridho’s interpretation” and set that row in italics. The caption repeats the handoff’s labeling sentence: rows of demonstrated results and measured proxies are evidence, the marked row is interpretation, and Not measured is what the papers do not report. Do not add the 58.0 to 54.0 path or the rounding band to the cell. Choose one stub spelling for the whole paper, “Eridho’s interpretation” or “My interpretation”, and do not mix them.</dd>
+          <dt>Axis</dt>
+          <dd>Where the interpretation row sits</dd>
+          <dt>Basis</dt>
+          <dd>direct: <code>notes/handoff-2026-11-20.md:43</code> places the reading inside the table, and line 46 is the labeling sentence. direct: <code>notes/outline.md:54</code> names “my interpretation” as a row of the comparison table, and lines 57–58 keep 58.0, 54.0, and +1.7 to +3.4 in later bullets. direct: <code>template/formatting.md:188–189</code> says a critical distinction should not rely on color alone. direct: <code>paper/main.tex</code> already loads <code>booktabs</code>.</dd>
+          <dt>Rationale</dt>
+          <dd>This is the alternative to I1, and it matches the table the handoff already drew. The rule and the italics tell a student that +2.5 is not another Toolformer result, without taking the row out of the grid he asked to see.</dd>
+          <dt>Downsides</dt>
+          <dd>+2.5 still shares the ruled grid with 40.4 and 14.8. Italics are a weaker mark than moving the sentence out. Four full rows make the 6 cm check harder to pass unless I3 also shortens Demonstrated.</dd>
+          <dt>Confidence</dt>
+          <dd>78%</dd>
+          <dt>Complexity</dt>
+          <dd>Low</dd>
+        </dl>
+      </article>
+
+      <article class="idea" id="i5">
+        <h3>I5. Move the pointers into one legend</h3>
+        <div class="meta-row">
+          <span class="pill">Source pointers in cells</span>
+          <span class="pill warn">64%</span>
+          <span class="pill">Low</span>
+        </div>
+        <dl>
+          <dt>Description</dt>
+          <dd>Strip only the parentheses from the sentences. Under the tabular, still inside the float, print one legend: Demonstrated / ReAct: Table 1; Demonstrated / Toolformer: Table 4 and Table 9; Measured proxy / ReAct: Fig. 2; Measured proxy / Toolformer: Tables 3–9 and §7 yield; Not measured / Toolformer: §7 cost. The interpretation cells gain no source number. The legend says “Benefit depends on the task” is a reading of the ReAct Demonstrated cell, and the +2.5 sentence is a reading of “Diminishing returns (Table 9).” “Switching methods by a rule helps.” stays listed as having no source number. “Best combination order depends on the task.” stays in its sentence and is not assigned Table 1.</dd>
+          <dt>Axis</dt>
+          <dd>Source pointers in cells</dd>
+          <dt>Basis</dt>
+          <dd>direct: the parentheses in <code>notes/handoff-2026-11-20.md:41–44</code> are the whole pointer inventory, and line 43 has none. direct: line 63 says +2.5 is his, not the paper’s. direct: no file in the repo chooses <code>Table~\ref</code> versus <code>Tab.</code> for these source numbers. reasoned: the success line (“every cell traces”) tempts a new “(Table 9)” on his inference, which would present that inference as a number Table 9 prints.</dd>
+          <dt>Rationale</dt>
+          <dd>The cells become claims a student can scan, and the legend is the checklist against the two PDFs. It also records, in the float, which sentences have no source number.</dd>
+          <dt>Downsides</dt>
+          <dd>The legend costs lines against the 6 cm check. A reader must look down to see which table a sentence cites, instead of seeing “(Table 4)” at the end of the clause. I3’s inline parentheses are easier to check one cell at a time. Use I5 or inline pointers, not both.</dd>
+          <dt>Confidence</dt>
+          <dd>64%</dd>
+          <dt>Complexity</dt>
+          <dd>Low</dd>
+        </dl>
+      </article>
+
+      <article class="idea" id="i6">
+        <h3>I6. Two paper cards in a single column</h3>
+        <div class="meta-row">
+          <span class="pill">Column width</span>
+          <span class="pill warn">52%</span>
+          <span class="pill warn">Medium</span>
+        </div>
+        <figure>
+          <svg viewBox="0 0 640 200" role="img" aria-labelledby="cap6">
+            <rect x="150" y="12" width="160" height="176" fill="#fffcf8" stroke="#1c1917"/>
+            <text x="162" y="36" fill="#1e3a5f" font-size="14" font-family="Source Sans 3, sans-serif" font-weight="700">ReAct</text>
+            <text x="162" y="60" fill="#1c1917" font-size="13" font-family="Source Sans 3, sans-serif">Demonstrated</text>
+            <text x="162" y="82" fill="#1c1917" font-size="13" font-family="Source Sans 3, sans-serif">Measured proxy</text>
+            <text x="162" y="104" fill="#1c1917" font-size="13" font-family="Source Sans 3, sans-serif">Interpretation</text>
+            <text x="162" y="126" fill="#1c1917" font-size="13" font-family="Source Sans 3, sans-serif">Not measured</text>
+            <rect x="330" y="12" width="160" height="176" fill="#fffcf8" stroke="#1c1917"/>
+            <text x="342" y="36" fill="#1e3a5f" font-size="14" font-family="Source Sans 3, sans-serif" font-weight="700">Toolformer</text>
+            <text x="342" y="60" fill="#1c1917" font-size="13" font-family="Source Sans 3, sans-serif">Demonstrated</text>
+            <text x="342" y="82" fill="#1c1917" font-size="13" font-family="Source Sans 3, sans-serif">Measured proxy</text>
+            <text x="342" y="104" fill="#1c1917" font-size="13" font-family="Source Sans 3, sans-serif">Interpretation</text>
+            <text x="342" y="126" fill="#1c1917" font-size="13" font-family="Source Sans 3, sans-serif">Not measured</text>
+          </svg>
+          <figcaption id="cap6">One single-column float. The reader matches row names down two cards instead of across a row.</figcaption>
+        </figure>
+        <dl>
+          <dt>Description</dt>
+          <dd>Put two tabulars in one single-column <code>table</code>, stacked the way the ACL template stacks two tabulars in its accent example. Each card is headed by the paper name and uses the four row labels. Every handoff sentence stays in its card. The facing column stays free for Discussion prose. This is the single-column alternative to I2. It is not the default.</dd>
+          <dt>Axis</dt>
+          <dd>Column width</dd>
+          <dt>Basis</dt>
+          <dd>direct: <code>template/formatting.md:98</code> fixes a column at 7.7 cm, and full-width tables are the exception at line 90. direct: the template’s accent table is one <code>table</code> holding two <code>tabular</code> blocks. direct: <code>notes/outline.md:54</code> asks for one column each for ReAct and Toolformer in a single comparison table, which this shape does not do.</dd>
+          <dt>Rationale</dt>
+          <dd>If a full-width band would crowd the one-page Discussion, a tall single-column float can spend the same quarter page of area (about 12 cm of one column) and leave the other column for the bullets. The sentences fit a 7.7 cm card better than they fit a third of that width.</dd>
+          <dt>Downsides</dt>
+          <dd>The reader cannot compare FEVER against ASDiv by looking across a row. The outline’s comparison table is that across-row grid. Each card will still wrap, and two copies of the row labels spend vertical space. Choose this only if side-by-side scanning matters less than keeping the other column free.</dd>
+          <dt>Confidence</dt>
+          <dd>52%</dd>
+          <dt>Complexity</dt>
+          <dd>Medium</dd>
+        </dl>
+      </article>
+    </section>
+
+    <section id="rejection-summary">
+      <h2>Rejection Summary</h2>
+      <table>
+        <thead>
+          <tr><th id="r-id">#</th><th>Idea</th><th>Reason rejected</th></tr>
+        </thead>
+        <tbody>
+          <tr><td id="r1">R1.</td><td>Narrow three-column <code>table</code> inside 7.7 cm</td><td>Each paper column is too narrow for the handoff sentences. I2 replaces it.</td></tr>
+          <tr><td id="r2">R2.</td><td>One wrapping cell that states both papers</td><td>Drops the two paper columns the outline asks for. The proxy cells do not share a unit.</td></tr>
+          <tr><td id="r3">R3.</td><td>Height math stated on its own</td><td>Folded into I2. It is the check, not a separate table.</td></tr>
+          <tr><td id="r4">R4.</td><td>Shorten the stub to “Reading” as its own idea</td><td>Folded into I2. The attribution still has to appear in the caption.</td></tr>
+          <tr><td id="r5">R5.</td><td>Move only the Demonstrated glosses, with no other cell rule</td><td>Folded into I3, which also names where each sentence goes.</td></tr>
+          <tr><td id="r6">R6.</td><td>Span “tokens, latency, money” on its own</td><td>Folded into I3.</td></tr>
+          <tr><td id="r7">R7.</td><td>Line breaks inside cells, with no move list</td><td>Folded into I3. A shared score column was refused because ReAct’s Demonstrated cell has no numerals.</td></tr>
+          <tr><td id="r8">R8.</td><td>A fourth Src column of abbreviations such as T1 and T4</td><td>Harder for a student than “(Table 1)”, and it spends width the papers need.</td></tr>
+          <tr><td id="r9">R9.</td><td>Pointers stacked under the row label</td><td>The stub is already the narrow column. I5 puts the same inventory in a legend instead.</td></tr>
+          <tr><td id="r10">R10.</td><td>Parentheses kept, with no caption about whose Table 1</td><td>Incomplete. I1 and I2 add the caption sentence, because this paper’s float will also be Table 1.</td></tr>
+          <tr><td id="r11">R11.</td><td>Rows keyed by Table 1, Fig. 2, Table 4, Table 9, §7</td><td>Replaces the four row names the handoff and the outline fix.</td></tr>
+          <tr><td id="r12">R12.</td><td>“§7, yield” and “§7, cost” as a standalone change</td><td>Folded into I3. Worth doing, not a separate direction.</td></tr>
+          <tr><td id="r13">R13.</td><td>Three evidence rows with the reading in ordinary section prose</td><td>Fails “readable without the prose” once the float moves away from that paragraph. I1 keeps the sentences inside the float.</td></tr>
+          <tr><td id="r14">R14.</td><td>Move the interpretation row to after Not measured</td><td>Reorders the handoff for little gain. I4’s rule does the marking without a new order.</td></tr>
+          <tr><td id="r15">R15.</td><td>Move only the +2.5 sentence to the caption</td><td>Splits one reading in half. I1 moves all four sentences, or I4 keeps all four in the grid.</td></tr>
+          <tr><td id="r16">R16.</td><td>ReAct’s reading in the caption, Toolformer’s reading in a band</td><td>Breaks the parallel rows. A student can read “switching methods helps” as measured the way +2.5 was calculated.</td></tr>
+          <tr><td id="r17">R17.</td><td>Caption labeling sentence with the row left unmarked</td><td>Folded into I4. The caption alone does not separate +2.5 from 40.4 inside the grid.</td></tr>
+          <tr><td id="r18">R18.</td><td>Use the row labels as a table of contents for the Discussion, and park Table 9 arithmetic below</td><td>That is how the prose should behave, not a choice about the float. The arithmetic is already outside the cell in the handoff.</td></tr>
+          <tr><td id="r19">R19.</td><td>Shrink the table below 11 pt, or scale it with <code>resizebox</code></td><td>Document text is 11 pt in the formatting notes. The repo has no <code>resizebox</code>.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer class="composition-signal">Composed 2026-11-21T08:52:53Z by ce-ideate from the Section 5 comparison-table focus in this paper.</footer>
+  </div>
+</body>
+</html>

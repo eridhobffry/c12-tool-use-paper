@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ideation: Selective-calling paragraph</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,460;8..60,600&amp;family=Source+Sans+3:wght@420;600&amp;display=swap">
+<style>
+  :root {
+    --bg: #f6f3ee;
+    --ink: #1c1917;
+    --muted: #44403c;
+    --card: #fffcf8;
+    --line: #d6d0c6;
+    --accent: #1e4d3a;
+    --accent-soft: #e7f0eb;
+    --accent-ink: #143628;
+    --warn-soft: #f8efe4;
+    --warn-ink: #5c3b1e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Source Serif 4", "Iowan Old Style", Palatino, Georgia, serif;
+    font-size: 17px;
+    line-height: 1.5;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 2.5rem 1.4rem 4rem; }
+  header.meta { margin-bottom: 2rem; }
+  .eyebrow {
+    font-family: "Source Sans 3", "Segoe UI", sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin: 0 0 0.4rem;
+  }
+  h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 0.8rem; font-weight: 600; }
+  .meta-list {
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    gap: 0.25rem 0.8rem;
+    font-family: "Source Sans 3", "Segoe UI", sans-serif;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+  .meta-list dt { color: var(--muted); margin: 0; }
+  .meta-list dd { margin: 0; }
+  nav.toc {
+    font-family: "Source Sans 3", "Segoe UI", sans-serif;
+    font-size: 0.95rem;
+    margin: 1.4rem 0 0;
+  }
+  nav.toc a { color: var(--accent); text-decoration: none; margin-right: 1rem; }
+  nav.toc a:hover { text-decoration: underline; }
+  section { margin: 2.4rem 0; }
+  h2 { font-size: 1.35rem; margin: 0 0 0.8rem; }
+  h3 { font-size: 1.15rem; margin: 0; }
+  p { max-width: 72ch; margin: 0.6rem 0; }
+  ul { max-width: 72ch; padding-left: 1.2rem; }
+  a { color: var(--accent); }
+  .jump {
+    font-family: "Source Sans 3", "Segoe UI", sans-serif;
+    font-size: 0.95rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    margin: 0 0 1.2rem;
+  }
+  .jump ol { margin: 0.3rem 0 0; padding-left: 1.2rem; }
+  .jump a { text-decoration: none; }
+  .jump a:hover { text-decoration: underline; }
+  article.idea {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 1.1rem 1.15rem 1.2rem;
+    margin: 1rem 0;
+  }
+  .idchip {
+    font-family: "Source Sans 3", "Segoe UI", sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+    border-radius: 999px;
+    padding: 0.12rem 0.5rem;
+    margin-right: 0.4rem;
+  }
+  .chips { margin: 0.55rem 0 0.2rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .pill {
+    font-family: "Source Sans 3", "Segoe UI", sans-serif;
+    font-size: 0.78rem;
+    border-radius: 999px;
+    padding: 0.12rem 0.55rem;
+    background: var(--warn-soft);
+    color: var(--warn-ink);
+  }
+  .field { margin: 0.7rem 0 0; }
+  .field strong {
+    font-family: "Source Sans 3", "Segoe UI", sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+  figure { margin: 0.8rem 0 0.2rem; }
+  figure svg { width: 100%; height: auto; display: block; }
+  figcaption {
+    font-family: "Source Sans 3", "Segoe UI", sans-serif;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 0.35rem;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "Source Sans 3", "Segoe UI", sans-serif;
+    font-size: 0.92rem;
+    background: var(--card);
+  }
+  th, td { text-align: left; vertical-align: top; padding: 0.55rem 0.6rem; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 600; }
+  code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.88em; }
+  footer.composition-signal {
+    margin-top: 3rem;
+    font-family: "Source Sans 3", "Segoe UI", sans-serif;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="meta">
+  <p class="eyebrow">Ideation</p>
+  <h1>Selective-calling paragraph</h1>
+  <dl class="meta-list">
+    <dt>Date</dt><dd><time datetime="2026-11-21">2026-11-21</time></dd>
+    <dt>Topic</dt><dd>selective-calling-paragraph</dd>
+    <dt>Focus</dt><dd>Write the selective-calling paragraph: ReAct's switching rules plus Toolformer's k=1 calibration (44.3 vs. 34.9)</dd>
+    <dt>Mode</dt><dd>repo-grounded</dd>
+  </dl>
+  <nav class="toc" aria-label="Sections">
+    <a href="#grounding-context">Grounding</a>
+    <a href="#topic-axes">Axes</a>
+    <a href="#ranked-ideas">Ideas</a>
+    <a href="#rejection-summary">Cuts</a>
+  </nav>
+</header>
+
+<section id="grounding-context">
+  <h2>Grounding Context</h2>
+  <p>Discussion in <code>paper/main.tex</code> is still a TODO. The comment lists task-dependent gains, the Table 9 reanalysis, selective calling, and the missing fix/break table, and it forbids a cost-effectiveness claim. The outline already states the paragraph's job in one bullet: ReAct's combinations switch method when a step limit is hit or the majority vote is low, and Toolformer at k=1 reaches 44.3 on the examples it chose not to call, against 34.9 across all examples with calls disabled.</p>
+  <p>The handoff's fourth finding adds the mechanism line and the loss of that gap at higher k. On T-REx, k=0 is 34.9 with calls off. At k=1 the call share is 40.3%, overall accuracy is 47.8, accuracy on called examples is 53.0, and accuracy on uncalled examples is 44.3. At k=3 those figures are 82.8%, 52.9, 58.0, and 29.0. k is the rank at which the call token may be emitted. It is a decoding threshold. The comparison table already records that tokens, latency, and money are unmeasured.</p>
+  <p>ReAct's combination scores stay with the combinations bullet. On HotpotQA exact match / FEVER accuracy, CoT-SC alone is 33.4 / 60.4, CoT-SC then ReAct is 34.2 / 64.6, and ReAct then CoT-SC is 35.1 / 62.0. "Switching methods by a rule helps" is in the interpretation row. "Calibrated to some extent" is the authors' reading of 44.3 against 34.9. There is no institutional-learnings corpus under <code>docs/solutions/</code>.</p>
+</section>
+
+<section id="topic-axes">
+  <h2>Topic Axes</h2>
+  <ul>
+    <li>ReAct switching rules</li>
+    <li>k=1 calibration</li>
+    <li>Claim boundaries</li>
+    <li>Discussion fit</li>
+  </ul>
+</section>
+
+<section id="ranked-ideas">
+  <h2>Ranked Ideas</h2>
+  <div class="jump">
+    <strong>Jump</strong>
+    <ol>
+      <li><a href="#i1">I1. A first sentence that stands alone</a></li>
+      <li><a href="#i2">I2. Name the two sets in 44.3 and 34.9</a></li>
+      <li><a href="#i3">I3. "Gone" includes the 29.0 cell</a></li>
+      <li><a href="#i4">I4. The decision sits in different places</a></li>
+      <li><a href="#i5">I5. The authors own the verb</a></li>
+      <li><a href="#i6">I6. Leave the combination scores upstream</a></li>
+    </ol>
+  </div>
+
+  <article class="idea" id="i1">
+    <h3><span class="idchip">I1</span> A first sentence that stands alone</h3>
+    <div class="chips">
+      <span class="pill">Discussion fit</span>
+      <span class="pill">Confidence 90%</span>
+      <span class="pill">Complexity Low</span>
+    </div>
+    <p class="field"><strong>Description</strong> The first sentence carries the whole selective-calling bullet and can be read without the next sentence. It names ReAct's two triggers, a step limit or a low majority vote, and Toolformer's contrast: 44.3 on the examples left uncalled at k=1, against 34.9 with calls disabled. A definition of the shared adjective, the combination scores, and the composition algebra stay in their own bullets. One further sentence may add the higher-k reversal. Anything that reteaches the loop or the loss filter belongs in the ReAct or Toolformer section.</p>
+    <figure>
+      <svg viewBox="0 0 680 128" role="img" aria-label="Three slots of the first sentence: ReAct triggers, the 44.3 against 34.9 contrast, and an optional higher-k cell.">
+        <rect x="8" y="28" width="190" height="72" rx="8" fill="#e7f0eb" stroke="#1e4d3a"/>
+        <rect x="244" y="28" width="210" height="72" rx="8" fill="#e7f0eb" stroke="#1e4d3a"/>
+        <rect x="500" y="28" width="168" height="72" rx="8" fill="#fffcf8" stroke="#1e4d3a" stroke-dasharray="4 3"/>
+        <text x="103" y="52" text-anchor="middle" fill="#143628" font-family="Source Sans 3, sans-serif" font-size="13" font-weight="600">ReAct triggers</text>
+        <text x="103" y="74" text-anchor="middle" fill="#1c1917" font-family="Source Sans 3, sans-serif" font-size="12">step limit, or</text>
+        <text x="103" y="90" text-anchor="middle" fill="#1c1917" font-family="Source Sans 3, sans-serif" font-size="12">low majority vote</text>
+        <text x="349" y="52" text-anchor="middle" fill="#143628" font-family="Source Sans 3, sans-serif" font-size="13" font-weight="600">Toolformer contrast</text>
+        <text x="349" y="74" text-anchor="middle" fill="#1c1917" font-family="Source Sans 3, sans-serif" font-size="12">44.3 uncalled at k=1</text>
+        <text x="349" y="90" text-anchor="middle" fill="#1c1917" font-family="Source Sans 3, sans-serif" font-size="12">against 34.9 calls off</text>
+        <text x="584" y="52" text-anchor="middle" fill="#143628" font-family="Source Sans 3, sans-serif" font-size="13" font-weight="600">Optional</text>
+        <text x="584" y="74" text-anchor="middle" fill="#1c1917" font-family="Source Sans 3, sans-serif" font-size="12">NC 29.0 at k=3</text>
+        <text x="584" y="90" text-anchor="middle" fill="#1c1917" font-family="Source Sans 3, sans-serif" font-size="12">if "gone" is said</text>
+        <text x="218" y="68" fill="#1e4d3a" font-size="18">+</text>
+        <text x="468" y="68" fill="#1e4d3a" font-size="18">+</text>
+      </svg>
+      <figcaption>The first sentence holds the two required slots. The third slot appears only when the sentence says the gap is gone.</figcaption>
+    </figure>
+    <p class="field"><strong>Basis</strong> <code>direct:</code> <code>notes/outline.md:59</code> — "ReAct's combinations switch method when a step limit is hit or the majority vote is low, and Toolformer at k=1 reaches 44.3 on the examples it chose not to call against 34.9 across all examples with calls disabled." <code>CLAUDE.md</code> requires the first sentence to state the claim. <code>notes/outline.md:54-61</code> gives Discussion seven other jobs besides this bullet.</p>
+    <p class="field"><strong>Rationale</strong> The length of the section decides the claim before any second draft. A sentence that still works aloud, alone, is the selective-calling paragraph. The rest of Discussion can keep its own bullets.</p>
+    <p class="field"><strong>Downsides</strong> A one-sentence paragraph will feel abrupt next to the table. The higher-k loss then needs the following sentence, or it drops out of this bullet and stays as the authors' remark in the Toolformer section.</p>
+    <p class="field"><strong>Confidence</strong> 90%</p>
+    <p class="field"><strong>Complexity</strong> Low</p>
+  </article>
+
+  <article class="idea" id="i2">
+    <h3><span class="idchip">I2</span> Name the two sets in 44.3 and 34.9</h3>
+    <div class="chips">
+      <span class="pill">Claim boundaries</span>
+      <span class="pill">Confidence 92%</span>
+      <span class="pill">Complexity Low</span>
+    </div>
+    <p class="field"><strong>Description</strong> The sentence names who each number scores. 44.3 is accuracy on the examples that received no call at k=1, about 59.7% of T-REx. 34.9 is accuracy on every example when calls are disabled. On the same k=1 row, the called 40.3% score 53.0 and overall accuracy is 47.8, which sits above the uncalled slice because overall accuracy is the weighted average of the called and uncalled scores. The paragraph reports that the withheld slice sits above the tool-off baseline. It stops before any claim that calling less raised accuracy on those examples.</p>
+    <figure>
+      <svg viewBox="0 0 680 150" role="img" aria-label="44.3 scores the uncalled slice. 34.9 scores every example with calls off. Overall accuracy 47.8 sits above the uncalled slice.">
+        <rect x="16" y="24" width="200" height="100" rx="8" fill="#e7f0eb" stroke="#1e4d3a"/>
+        <rect x="248" y="24" width="180" height="100" rx="8" fill="#f8efe4" stroke="#5c3b1e"/>
+        <rect x="460" y="24" width="200" height="100" rx="8" fill="#fffcf8" stroke="#1e4d3a"/>
+        <text x="116" y="52" text-anchor="middle" fill="#143628" font-family="Source Sans 3, sans-serif" font-size="14" font-weight="600">44.3 NC</text>
+        <text x="116" y="76" text-anchor="middle" fill="#1c1917" font-family="Source Sans 3, sans-serif" font-size="12">uncalled examples</text>
+        <text x="116" y="94" text-anchor="middle" fill="#1c1917" font-family="Source Sans 3, sans-serif" font-size="12">at k=1 (~59.7%)</text>
+        <text x="338" y="52" text-anchor="middle" fill="#5c3b1e" font-family="Source Sans 3, sans-serif" font-size="14" font-weight="600">34.9</text>
+        <text x="338" y="76" text-anchor="middle" fill="#1c1917" font-family="Source Sans 3, sans-serif" font-size="12">every example</text>
+        <text x="338" y="94" text-anchor="middle" fill="#1c1917" font-family="Source Sans 3, sans-serif" font-size="12">calls disabled</text>
+        <text x="560" y="52" text-anchor="middle" fill="#143628" font-family="Source Sans 3, sans-serif" font-size="14" font-weight="600">47.8 All</text>
+        <text x="560" y="76" text-anchor="middle" fill="#1c1917" font-family="Source Sans 3, sans-serif" font-size="12">same k=1 row</text>
+        <text x="560" y="94" text-anchor="middle" fill="#1c1917" font-family="Source Sans 3, sans-serif" font-size="12">above the 44.3 slice</text>
+      </svg>
+      <figcaption>Three numbers from one table row, three different sets. 44.3 is above the tool-off baseline and below the row's overall accuracy.</figcaption>
+    </figure>
+    <p class="field"><strong>Basis</strong> <code>direct:</code> <code>notes/outline.md:48</code> — "at k=1, accuracy on the 59.7% of examples where the model chose not to call is 44.3 (NC), above the 34.9 across all examples with calls disabled (k=0)". <code>notes/handoff-2026-11-20.md:55</code> — k=1 is 40.3% called, All 47.8, AC 53.0, NC 44.3. <code>notes/handoff-2026-11-20.md:62</code> — "All is the weighted average of AC and NC."</p>
+    <p class="field"><strong>Rationale</strong> This is the number the focus asks for, and it is the number a reader can reverse. Naming the sets keeps 44.3 as a slice score. The called examples on that same row still lift the average above the slice.</p>
+    <p class="field"><strong>Downsides</strong> The sentence grows by a clause. A reader who wants a within-example benefit of skipping will not find it, because the table does not score the same examples twice.</p>
+    <p class="field"><strong>Confidence</strong> 92%</p>
+    <p class="field"><strong>Complexity</strong> Low</p>
+  </article>
+
+  <article class="idea" id="i3">
+    <h3><span class="idchip">I3</span> "Gone" includes the 29.0 cell</h3>
+    <div class="chips">
+      <span class="pill">k=1 calibration</span>
+      <span class="pill">Confidence 88%</span>
+      <span class="pill">Complexity Low</span>
+    </div>
+    <p class="field"><strong>Description</strong> The handoff says the gap is gone at higher k. That sentence is locally checkable when it shows no-call accuracy falling under the tool-off baseline. The cell that does this with the least extra machinery is k=3: no-call accuracy 29.0, under 34.9, while overall accuracy is 52.9 and the call share is 82.8%. The move from 82.8% to 98.1% of examples, the 0.6 point overall gain, the drop in called-example accuracy from 58.0 to 54.0, and the about +2.5 inference stay in the previous bullets. If 29.0 does not fit, cut "gone" and leave the loss of calibration as the authors' statement in the Toolformer section.</p>
+    <figure>
+      <svg viewBox="0 0 680 210" role="img" aria-label="At k=1, no-call accuracy 44.3 is above the 34.9 line. At k=3, no-call accuracy 29.0 is below it, while overall accuracy rises to 52.9.">
+        <line x1="70" y1="36" x2="70" y2="168" stroke="#d6d0c6"/>
+        <line x1="70" y1="168" x2="640" y2="168" stroke="#d6d0c6"/>
+        <line x1="70" y1="90" x2="640" y2="90" stroke="#5c3b1e" stroke-dasharray="5 4"/>
+        <text x="64" y="94" text-anchor="end" fill="#5c3b1e" font-family="Source Sans 3, sans-serif" font-size="12">34.9</text>
+        <rect x="140" y="68" width="48" height="100" fill="#1e4d3a"/>
+        <rect x="200" y="58" width="48" height="110" fill="#8aa899"/>
+        <rect x="400" y="116" width="48" height="52" fill="#1e4d3a"/>
+        <rect x="460" y="46" width="48" height="122" fill="#8aa899"/>
+        <text x="164" y="60" text-anchor="middle" fill="#1c1917" font-family="Source Sans 3, sans-serif" font-size="12">44.3</text>
+        <text x="224" y="50" text-anchor="middle" fill="#1c1917" font-family="Source Sans 3, sans-serif" font-size="12">47.8</text>
+        <text x="424" y="108" text-anchor="middle" fill="#1c1917" font-family="Source Sans 3, sans-serif" font-size="12">29.0</text>
+        <text x="484" y="38" text-anchor="middle" fill="#1c1917" font-family="Source Sans 3, sans-serif" font-size="12">52.9</text>
+        <text x="194" y="188" text-anchor="middle" fill="#1c1917" font-family="Source Sans 3, sans-serif" font-size="13">k=1</text>
+        <text x="454" y="188" text-anchor="middle" fill="#1c1917" font-family="Source Sans 3, sans-serif" font-size="13">k=3</text>
+        <text x="560" y="78" fill="#1c1917" font-family="Source Sans 3, sans-serif" font-size="12">dark = NC</text>
+        <text x="560" y="96" fill="#1c1917" font-family="Source Sans 3, sans-serif" font-size="12">pale = All</text>
+      </svg>
+      <figcaption>No-call accuracy crosses under the tool-off line by k=3. Overall accuracy keeps rising. That crossing is the "gone" sentence. The flattening of overall accuracy from k=3 to k=10 is the previous bullet.</figcaption>
+    </figure>
+    <p class="field"><strong>Basis</strong> <code>direct:</code> <code>notes/handoff-2026-11-20.md:31</code> — "That gap is gone at higher k." <code>notes/handoff-2026-11-20.md:56</code> — k=3 is 82.8% called, All 52.9, AC 58.0, NC 29.0. <code>notes/outline.md:57</code> gives the composition bullet the fall in called-example accuracy from 58.0 to 54.0.</p>
+    <p class="field"><strong>Rationale</strong> "Gone" with only 44.3 and 34.9 asks the reader to trust a paraphrase. "Gone" plus the call-rate story from 82.8% to 98.1% makes this paragraph absorb the diminishing-returns bullet. One extra cell keeps the two claims apart.</p>
+    <p class="field"><strong>Downsides</strong> Three Table 9 numbers is the cap. Adding k=10's no-call accuracy of 22.5, or the call shares, turns the sentence into a second table.</p>
+    <p class="field"><strong>Confidence</strong> 88%</p>
+    <p class="field"><strong>Complexity</strong> Low</p>
+  </article>
+
+  <article class="idea" id="i4">
+    <h3><span class="idchip">I4</span> The decision sits in different places</h3>
+    <div class="chips">
+      <span class="pill">ReAct switching rules</span>
+      <span class="pill">Confidence 86%</span>
+      <span class="pill">Complexity Low</span>
+    </div>
+    <p class="field"><strong>Description</strong> One comparative clause says who is allowed to stop. In the ReAct combinations, an outside rule switches method when a step limit is reached or the majority vote is low. The step limit, 7 on HotpotQA and 5 on FEVER, is a setting. In Toolformer, the same model may start a call when the call token is among its top-k next tokens, and the reported evaluation allowed at most one call per input. At k=1 that token has to be the single most likely next token. The notes say the majority vote is low. They do not give a fraction of the 21 samples, so that fraction stays out until it is checked against the PDF again. The sentence also avoids "the model can only make one call." ReAct can chain calls until it answers or hits the limit.</p>
+    <figure>
+      <svg viewBox="0 0 680 140" role="img" aria-label="ReAct switches by an outside rule. Toolformer starts a call when the call token is among the top-k next tokens.">
+        <rect x="24" y="20" width="290" height="100" rx="8" fill="#e7f0eb" stroke="#1e4d3a"/>
+        <rect x="366" y="20" width="290" height="100" rx="8" fill="#f8efe4" stroke="#5c3b1e"/>
+        <text x="169" y="48" text-anchor="middle" fill="#143628" font-family="Source Sans 3, sans-serif" font-size="14" font-weight="600">ReAct combinations</text>
+        <text x="169" y="72" text-anchor="middle" fill="#1c1917" font-family="Source Sans 3, sans-serif" font-size="13">an outside rule switches method</text>
+        <text x="169" y="92" text-anchor="middle" fill="#1c1917" font-family="Source Sans 3, sans-serif" font-size="13">step limit, or a low majority</text>
+        <text x="511" y="48" text-anchor="middle" fill="#5c3b1e" font-family="Source Sans 3, sans-serif" font-size="14" font-weight="600">Toolformer at inference</text>
+        <text x="511" y="72" text-anchor="middle" fill="#1c1917" font-family="Source Sans 3, sans-serif" font-size="13">call token among the top-k</text>
+        <text x="511" y="92" text-anchor="middle" fill="#1c1917" font-family="Source Sans 3, sans-serif" font-size="13">next tokens; eval, one call</text>
+      </svg>
+      <figcaption>Same theme, two control points. One is a written backup rule. The other is a rank in the next-token list.</figcaption>
+    </figure>
+    <p class="field"><strong>Basis</strong> <code>direct:</code> <code>notes/handoff-2026-11-20.md:31</code> — "ReAct's combinations switch method by a rule: a step limit is reached, or the majority vote is low." <code>notes/handoff-2026-11-20.md:50</code> — "k means the model may start a call when the call token is among its top-k next tokens. Toolformer allows at most one call per input in the evaluation." <code>notes/handoff-2026-11-20.md:80</code> — "Do not write 'the model can only make one call.'"</p>
+    <p class="field"><strong>Rationale</strong> Without this clause the paragraph is two adjacent facts. With it, a classmate can say where each decision lives. The clause uses the notes' own wording for k and for the one-call evaluation.</p>
+    <p class="field"><strong>Downsides</strong> It spends a sentence on a distinction the body sections may already have taught. It does not say which ReAct trigger fires in which direction. The checked notes list the triggers with "or" and do not assign directions.</p>
+    <p class="field"><strong>Confidence</strong> 86%</p>
+    <p class="field"><strong>Complexity</strong> Low</p>
+  </article>
+
+  <article class="idea" id="i5">
+    <h3><span class="idchip">I5</span> The authors own the verb</h3>
+    <div class="chips">
+      <span class="pill">Claim boundaries</span>
+      <span class="pill">Confidence 86%</span>
+      <span class="pill">Complexity Low</span>
+    </div>
+    <p class="field"><strong>Description</strong> "Calibrated" appears only in the outline's construction: the authors read 44.3 against 34.9 as calibration "to some extent," and that reading is lost at higher k. The shorter handoff line, "Toolformer at k=1 is calibrated," does not survive as an unattributed finding. "Switching methods by a rule helps" stays in the interpretation row, next to "benefit depends on the task." Two legal drafts remain. Attribute the verb to Schick et al., or show 44.3 and 34.9 and stop. The second still matches the label rule when the sentence has no room for "the authors read."</p>
+    <p class="field"><strong>Basis</strong> <code>direct:</code> <code>notes/outline.md:48</code> — "which the authors read as calibration 'to some extent' that is lost at higher k (§5)". <code>notes/handoff-2026-11-20.md:43</code> — interpretation row: "Switching methods by a rule helps." <code>notes/handoff-2026-11-20.md:46</code> — "Label every claim: evidence (measured), interpretation (supported by that evidence), or speculation (needs more evidence)."</p>
+    <p class="field"><strong>Rationale</strong> Under a one-sentence budget the adjective is the claim. An unattributed "is calibrated" makes Eridho the one who measured calibration. The cells can carry the evidence without the adjective.</p>
+    <p class="field"><strong>Downsides</strong> Dropping the authors' hedge loses their own caution, which is part of why the higher-k sentence exists. Keeping both the hedge and the attribution costs words.</p>
+    <p class="field"><strong>Confidence</strong> 86%</p>
+    <p class="field"><strong>Complexity</strong> Low</p>
+  </article>
+
+  <article class="idea" id="i6">
+    <h3><span class="idchip">I6</span> Leave the combination scores upstream</h3>
+    <div class="chips">
+      <span class="pill">ReAct switching rules</span>
+      <span class="pill">Confidence 84%</span>
+      <span class="pill">Complexity Low</span>
+    </div>
+    <p class="field"><strong>Description</strong> This paragraph states the ReAct trigger and points at the combinations bullet for the result. HotpotQA exact match / FEVER accuracy already recorded there: CoT-SC alone 33.4 / 60.4, CoT-SC then ReAct 34.2 / 64.6, ReAct then CoT-SC 35.1 / 62.0. Both orders are above CoT-SC alone. The better order depends on the task, and that sentence is demonstrated evidence. Citing only 35.1 and 64.6 in this paragraph would hide the other order. The notes do not report accuracy on the questions that hit the limit or a low vote, so 35.1 is the score of the whole policy, and 44.3 is the score of a slice. They answer different questions.</p>
+    <p class="field"><strong>Basis</strong> <code>direct:</code> <code>notes/handoff-2026-11-20.md:114-115</code> — "CoT-SC then ReAct 34.2 / 64.6" and "ReAct then CoT-SC 35.1 / 62.0", under "HotpotQA exact match / FEVER accuracy", with CoT-SC at 33.4 / 60.4 on line 111. <code>notes/handoff-2026-11-20.md:41</code> — demonstrated: "Best combination order depends on the task." <code>notes/outline.md:38</code> already holds 35.1 and 64.6.</p>
+    <p class="field"><strong>Rationale</strong> The selective-calling bullet, as written in the outline, describes ReAct by the two triggers. The scores have a home. Bringing the winners back forces the other order back too, or the sentence overclaims.</p>
+    <p class="field"><strong>Downsides</strong> A reader who has not retained the combinations paragraph will not see that the rule's policy beat CoT-SC. A cross-reference costs a few words and depends on section order.</p>
+    <p class="field"><strong>Confidence</strong> 84%</p>
+    <p class="field"><strong>Complexity</strong> Low</p>
+  </article>
+</section>
+
+<section id="rejection-summary">
+  <h2>Rejection Summary</h2>
+  <table>
+    <thead>
+      <tr><th>#</th><th>Idea</th><th>Reason rejected</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>The two triggers fire in opposite directions</td><td>Refuted. The notes join the triggers with "or". They do not say the step limit leaves the tool loop while a low vote brings the tool in. A fetched ReAct HTML summary assigned those directions; the checked notes do not.</td></tr>
+      <tr><td>2</td><td>Put 35.1 and 64.6 in this paragraph as the ReAct half</td><td>Those are whole-policy scores, already in the combinations bullet. Citing only the winning order hides 34.2 / 62.0. Folded into I6.</td></tr>
+      <tr><td>3</td><td>State the vote threshold as fewer than n/2 of 21 samples</td><td>The checked notes say "the majority vote is low" and do not give that fraction. It stays out until the PDF is checked again.</td></tr>
+      <tr><td>4</td><td>A separate sentence that selective calling is not cost-effectiveness</td><td>The comparison table's not-measured row and finding 5 already say tokens, latency, and money are unmeasured. A second cost sentence reopens a dropped question inside the one bullet that has a positive accuracy claim.</td></tr>
+      <tr><td>5</td><td>Mention Figure 2's 3–5 samples here</td><td>Figure 2 is a sample-efficiency proxy in the ReAct section. It measures a different thing from call share and from no-call accuracy.</td></tr>
+      <tr><td>6</td><td>Close on the 2 vs 5 vs 14 call sweet spot</td><td>The outline already parks that as an open implication. It is not a finding, and it is the next bullet.</td></tr>
+      <tr><td>7</td><td>Build the fix/break point inside this paragraph</td><td>The next bullet owns the missing paired table. A one-line bridge would spend the sentence I1 needs for 29.0.</td></tr>
+      <tr><td>8</td><td>Quote footnote 3 (0.84% and 1.33% of correct trajectories use every step)</td><td>That footnote answers how often a correct trajectory exhausts the budget. It is a different question from calibration, and beside 44.3 it will be read as a call rate.</td></tr>
+      <tr><td>9</td><td>Teach the contrast with a reject option, a diet analogy, or SMART's headline percentages</td><td>Diet and exam analogies are banned in the paper. SMART may be cited only for its tool-overuse definition, and this paragraph does not need that slot. The 24% and 37% figures were not re-read in the paper body.</td></tr>
+      <tr><td>10</td><td>Open by defining the word "selective"</td><td>The conclusion already states the recommendation. A glossary sentence is where "can only make one call" and a shared operation the two papers do not share tend to enter.</td></tr>
+      <tr><td>11</td><td>Lead with "always calling fails"</td><td>Duplicate of the mechanism sentence. The notes anchor the failure in the no-call column at higher k, which is I3, not in a general slogan.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<footer class="composition-signal">Composed 2026-11-21T09:20:00Z by ce-ideate from the selective-calling focus in this paper's notes and Discussion placeholder.</footer>
+</div>
+</body>
+</html>
