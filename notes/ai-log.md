@@ -33,3 +33,7 @@ Feeds the AI Disclosure section. One line per use: date | tool | task | section/
 | 2026-11-22 | Grok 4.7 (Cursor) | Inserted the approved selective-calling paragraph verbatim into Discussion | Discussion (selective-calling paragraph) |
 | 2026-11-22 | Claude Code (Opus 5.5) | Updated the AGENTS.md Table 9 preference to match the approved paragraph (about 30/32 %, assumptions in their own sentence, do not reword) | `AGENTS.md` (meta) |
 | 2026-11-22 | Claude Code (Opus 5.5) | Audited the Cursor insertion of the selective-calling paragraph (text, placement, keys, numbers vs PDFs, build); added the missing terms-to-avoid learning file. No paper prose | `notes/learnings/2026-11-22-selective-calling-terms.md`, `notes/ai-log.md` |
+| 2026-11-25 | Claude (Opus 5.5, chat) | Grilled fix/break + sweet-spot reasoning; verified Reitich (2026) and Wu et al. (2026) on arXiv; drafted the fix/break + sweet-spot paragraphs from Eridho's dictated reasoning | Discussion (fix/break, sweet spot), references |
+| 2026-11-25 | Grok 4.7 (Cursor) | Added the consented pointer to `docs/solutions/` and `CONCEPTS.md` at the end of the Commands section | `CLAUDE.md` |
+| 2026-11-25 | Grok 4.7 (Cursor) | Moved the fix/break and sweet-spot paragraphs to follow the selective-calling paragraph after main was fast-forwarded | Discussion (fix/break, sweet spot) |
+| 2026-11-25 | Cursor | Rephrased the second Both-papers opening | Discussion |
